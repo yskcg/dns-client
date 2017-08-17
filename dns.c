@@ -15,7 +15,6 @@ void convert(int ip,char *result)
     unsigned char bytes[4];
 	
 	ip = ntohl(ip);
-	print_debug_log("%u\n",ip);
     bytes[0] = ip & 0xFF;
     bytes[1] = (ip >>8) & 0xFF;
     bytes[2] = (ip >>16) & 0xFF;
@@ -37,7 +36,7 @@ void seperate(unsigned char* name,unsigned char* host)
 	char buf[128] = {0};
 
 	if(host == NULL){
-		return 0;
+		return ;
 	}
 	
 	memcpy(buf,host,strlen(host));
@@ -235,7 +234,7 @@ int main(int argc, char *argv[])
 		exit(0);
 	}
 	
-	unsigned char out[MAX_RESULT][64];
+	unsigned char *out[32][64];
 	char *hostname = argv[1];
 	char *dnsserverip = argv[2];
 	
